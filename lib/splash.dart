@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:correio_elegante/home_page.dart';
-import 'package:correio_elegante/main.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
