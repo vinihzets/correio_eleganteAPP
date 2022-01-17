@@ -23,13 +23,8 @@ class _SplashState extends State<Splash> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(
-                    'https://raw.githubusercontent.com/mariaalm20/correio-elegante-devchallenge/main/design/Pagina%20de%20Carregamento.png',
-                  ),
-                  fit: BoxFit.cover))),
-    );
+        body: Center(
+      child: Image.asset('assets/Logo.png'),
+    ));
   }
 }
