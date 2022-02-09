@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
                   child: GridView.count(
                     crossAxisCount: 2,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
                       _buildItem('assets/beer.png'),
                       _buildItem('assets/lollipop.png'),
@@ -46,24 +46,24 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: const EdgeInsets.all(25.0),
-              child: Text(
+              child: const Text(
                 'envie mensagens e presentes incriveis!!',
                 style: TextStyle(
                     fontSize: 15.0,
                     fontStyle: FontStyle.normal,
-                    color: Colors.grey[250],
+                    color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => RegisterMessage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const RegisterMessage()));
               },
               style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.pinkAccent)),
-              child: Text('Começar!!'),
+              child: const Text('Começar!!'),
             )
           ],
         ),
@@ -73,9 +73,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 Widget _buildItem(String url) {
-  return Container(
-    child: Image.asset(
-      url,
-    ),
+  return Image.asset(
+    url,
   );
 }

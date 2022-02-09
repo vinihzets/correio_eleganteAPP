@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:correio_elegante/final_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class RegisterMessage extends StatefulWidget {
   const RegisterMessage({Key? key}) : super(key: key);
@@ -9,11 +12,19 @@ class RegisterMessage extends StatefulWidget {
 }
 
 class _RegisterMessageState extends State<RegisterMessage> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _textController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _textController = TextEditingController();
 
   late String selectedObject;
+
+  // Future<Map> _getWhatsapp() async {
+  //   http.Response response;
+
+  //   response = await http.get('https://graph.microsoft.com/v1.0/me/mailfolders/inbox/messages?$select=subject,from,receivedDateTime&$top=25&$orderby=receivedDateTime%20DESC');
+
+  //   return json.decode(response.body);
+  // }
 
   @override
   void initState() {
@@ -34,7 +45,7 @@ class _RegisterMessageState extends State<RegisterMessage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 20.0),
               child: Text(
                 'Voce Gostaria De Se Indentificar?',
@@ -44,10 +55,12 @@ class _RegisterMessageState extends State<RegisterMessage> {
             TextField(
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.pink, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.pink, width: 2.0),
                       borderRadius: BorderRadius.circular(25.0)),
                   labelText: 'Digite seu nome ou apelido!',
-                  labelStyle: TextStyle(color: Colors.grey, fontSize: 18.0)),
+                  labelStyle:
+                      const TextStyle(color: Colors.grey, fontSize: 18.0)),
               controller: _nameController,
             ),
             Padding(
@@ -86,16 +99,17 @@ class _RegisterMessageState extends State<RegisterMessage> {
             TextField(
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.pink, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.pink, width: 2.0),
                       borderRadius: BorderRadius.circular(25.0)),
                   labelText: 'Digite o email dele ou dela',
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0)),
               controller: _emailController,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 20.0),
               child: Text(
                 'Surpreenda',
@@ -108,11 +122,12 @@ class _RegisterMessageState extends State<RegisterMessage> {
             TextField(
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.pink, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.pink, width: 2),
                       borderRadius: BorderRadius.circular(25)),
                   labelText:
                       'Digite uma frase ou algo elegante para seu/sua amado(a)',
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0)),
@@ -121,10 +136,10 @@ class _RegisterMessageState extends State<RegisterMessage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => DonePage(),
+                  builder: (context) => const DonePage(),
                 ));
               },
-              child: Text('Enviar Correio!'),
+              child: const Text('Enviar Correio!'),
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.pinkAccent),
@@ -143,11 +158,9 @@ class _RegisterMessageState extends State<RegisterMessage> {
           selectedObject = url;
         });
       },
-      child: Container(
-        child: Image.asset(
-          url,
-          color: selectedObject == url ? Colors.grey : null,
-        ),
+      child: Image.asset(
+        url,
+        color: selectedObject == url ? Colors.grey : null,
       ),
     );
   }
